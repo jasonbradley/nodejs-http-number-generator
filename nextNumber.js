@@ -26,10 +26,10 @@ function initFile()
 //increment the counter and return the next number
 function incrementFileNumber()
 {
-    var currentNumber = parseInt(fs.readFileSync(FILE_PATH, 'utf8'))
+    var currentNumber = parseInt(fs.readFileSync(FILE_PATH, 'utf8'), 10)
 
     //ensure we have a number first
-    nextNumber = (!currentNumber) ? STARTING_NUMBER : parseInt(currentNumber) + parseInt(INCREMENT_COUNT)
+    nextNumber = (!currentNumber) ? STARTING_NUMBER : parseInt(currentNumber, 10) + parseInt(INCREMENT_COUNT, 10)
 
     //save the new number
     fs.writeFileSync(FILE_PATH, nextNumber)
@@ -49,7 +49,7 @@ function getNextNumber()
         nextNumber = incrementFileNumber()
     }
 
-    return parseInt(nextNumber)
+    return parseInt(nextNumber, 10)
 }
 
 //deal with the http request
